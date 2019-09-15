@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Button from '@material-ui/core/Button';
 
 
 function Square (props) {
         return (
-            <button className="square" onClick={props.onClick}>
+            <Button variant="contained" color="secondary" className="square {classes.button}" onClick={props.onClick}>
                 {props.value}
-            </button>
+            </Button>
         );
 }
 
@@ -92,8 +93,8 @@ class Game extends Component {
                 'Go to game start';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}
-                    </button>
+                    <Button variant="contained" className="moveButton" onClick={() => this.jumpTo(move)}>{desc}
+                    </Button>
                 </li>
             );
         });
@@ -107,6 +108,9 @@ class Game extends Component {
 
         return (
             <div className="game">
+                <div className="title">
+                    Let's Tic-Tac-Toe!
+                </div>
                 <div className="game-board">
                     <Board
                     squares={current.squares}
