@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Button from '@material-ui/core/Button';
+import Grid from "@material-ui/core/Grid";
 
 
 function Square (props) {
@@ -25,6 +26,7 @@ class Board extends Component {
     render() {
         return (
             <div>
+                <div className="btn-group">
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -39,6 +41,7 @@ class Board extends Component {
                     {this.renderSquare(6)}
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
+                </div>
                 </div>
             </div>
         );
@@ -108,19 +111,27 @@ class Game extends Component {
 
         return (
             <div className="game">
+                <Grid container spacing={0}>
+                    <Grid item>
                 <div className="title">
                     Let's Tic-Tac-Toe!
                 </div>
+                    </Grid>
+                    <Grid item>
                 <div className="game-board">
                     <Board
                     squares={current.squares}
                     onClick={(i) => this.handleClick(i)}
                     />
                 </div>
+                    </Grid>
+                    <Grid item>
                 <div className="game-info">
                     <div>{ status }</div>
                     <ol>{ moves }</ol>
                 </div>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
